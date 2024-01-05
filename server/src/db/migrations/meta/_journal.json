@@ -1,0 +1,48 @@
+{
+    "version": "5",
+    "dialect": "pg",
+    "entries": [
+        {
+            "idx": 0,
+            "version": "5",
+            "when": 1703771521010,
+            "tag": "0000_tearful_tattoo",
+            "breakpoints": true
+        },
+        {
+            "idx": 1,
+            "version": "5",
+            "when": 1703811464430,
+            "tag": "0001_naive_stone_men",
+            "breakpoints": true
+        },
+        {
+            "idx": 2,
+            "version": "5",
+            "when": 1703813381538,
+            "tag": "0002_wonderful_kinsey_walden",
+            "breakpoints": true
+        },
+        {
+            "idx": 3,
+            "version": "5",
+            "when": 1703818398317,
+            "tag": "0003_warm_earthquake",
+            "breakpoints": true
+        },
+        {
+            "idx": 4,
+            "version": "5",
+            "when": 1703903927650,
+            "tag": "0004_faulty_nocturne",
+            "breakpoints": true
+        },
+        {
+            "idx": 5,
+            "version": "5",
+            "when": 1703907774169,
+            "tag": "0005_long_scorpion",
+            "breakpoints": true
+        }
+    ]
+}

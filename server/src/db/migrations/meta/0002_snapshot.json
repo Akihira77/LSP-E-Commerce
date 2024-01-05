@@ -1,0 +1,372 @@
+{
+    "id": "7bd758e7-4fd9-4e3e-801d-91c7bf3a8104",
+    "prevId": "29c79415-a766-4136-8cab-05b5d2293186",
+    "version": "5",
+    "dialect": "pg",
+    "tables": {
+        "Addresses": {
+            "name": "Addresses",
+            "schema": "",
+            "columns": {
+                "Id": {
+                    "name": "Id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "Street": {
+                    "name": "Street",
+                    "type": "varchar(255)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "City": {
+                    "name": "City",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "State": {
+                    "name": "State",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Postal_Code": {
+                    "name": "Postal_Code",
+                    "type": "varchar(9)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Created_At": {
+                    "name": "Created_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Updated_At": {
+                    "name": "Updated_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "now()"
+                },
+                "User_Id": {
+                    "name": "User_Id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "Addresses_User_Id_Users_Id_fk": {
+                    "name": "Addresses_User_Id_Users_Id_fk",
+                    "tableFrom": "Addresses",
+                    "tableTo": "Users",
+                    "columnsFrom": ["User_Id"],
+                    "columnsTo": ["Id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
+        },
+        "Categories": {
+            "name": "Categories",
+            "schema": "",
+            "columns": {
+                "Id": {
+                    "name": "Id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "Name": {
+                    "name": "Name",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Created_At": {
+                    "name": "Created_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Updated_At": {
+                    "name": "Updated_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "now()"
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
+        },
+        "Products": {
+            "name": "Products",
+            "schema": "",
+            "columns": {
+                "Id": {
+                    "name": "Id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "Name": {
+                    "name": "Name",
+                    "type": "varchar(255)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Price": {
+                    "name": "Price",
+                    "type": "numeric",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Stock": {
+                    "name": "Stock",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Date_Expired": {
+                    "name": "Date_Expired",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Category_Id": {
+                    "name": "Category_Id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "Products_Category_Id_Categories_Id_fk": {
+                    "name": "Products_Category_Id_Categories_Id_fk",
+                    "tableFrom": "Products",
+                    "tableTo": "Categories",
+                    "columnsFrom": ["Category_Id"],
+                    "columnsTo": ["Id"],
+                    "onDelete": "set null",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
+        },
+        "Transaction_Details": {
+            "name": "Transaction_Details",
+            "schema": "",
+            "columns": {
+                "Id": {
+                    "name": "Id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "Quantity": {
+                    "name": "Quantity",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Product_Id": {
+                    "name": "Product_Id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Transaction_Id": {
+                    "name": "Transaction_Id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "Transaction_Details_Product_Id_Products_Id_fk": {
+                    "name": "Transaction_Details_Product_Id_Products_Id_fk",
+                    "tableFrom": "Transaction_Details",
+                    "tableTo": "Products",
+                    "columnsFrom": ["Product_Id"],
+                    "columnsTo": ["Id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                },
+                "Transaction_Details_Transaction_Id_Transactions_Id_fk": {
+                    "name": "Transaction_Details_Transaction_Id_Transactions_Id_fk",
+                    "tableFrom": "Transaction_Details",
+                    "tableTo": "Transactions",
+                    "columnsFrom": ["Transaction_Id"],
+                    "columnsTo": ["Id"],
+                    "onDelete": "no action",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
+        },
+        "Transactions": {
+            "name": "Transactions",
+            "schema": "",
+            "columns": {
+                "Id": {
+                    "name": "Id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "Total_Price": {
+                    "name": "Total_Price",
+                    "type": "numeric",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Payment_Method": {
+                    "name": "Payment_Method",
+                    "type": "varchar(15)",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "'TUNAI'"
+                },
+                "Status_Transactions": {
+                    "name": "Status_Transactions",
+                    "type": "Status_Transactions",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Created_At": {
+                    "name": "Created_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "User_Id": {
+                    "name": "User_Id",
+                    "type": "integer",
+                    "primaryKey": false,
+                    "notNull": true
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {
+                "Transactions_User_Id_Users_Id_fk": {
+                    "name": "Transactions_User_Id_Users_Id_fk",
+                    "tableFrom": "Transactions",
+                    "tableTo": "Users",
+                    "columnsFrom": ["User_Id"],
+                    "columnsTo": ["Id"],
+                    "onDelete": "cascade",
+                    "onUpdate": "no action"
+                }
+            },
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {}
+        },
+        "Users": {
+            "name": "Users",
+            "schema": "",
+            "columns": {
+                "Id": {
+                    "name": "Id",
+                    "type": "serial",
+                    "primaryKey": true,
+                    "notNull": true
+                },
+                "Name": {
+                    "name": "Name",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Phone_Number": {
+                    "name": "Phone_Number",
+                    "type": "varchar(16)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Email": {
+                    "name": "Email",
+                    "type": "varchar(25)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Password": {
+                    "name": "Password",
+                    "type": "varchar(255)",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "role": {
+                    "name": "role",
+                    "type": "role",
+                    "primaryKey": false,
+                    "notNull": false,
+                    "default": "'CUSTOMER'"
+                },
+                "Created_At": {
+                    "name": "Created_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true
+                },
+                "Updated_At": {
+                    "name": "Updated_At",
+                    "type": "timestamp",
+                    "primaryKey": false,
+                    "notNull": true,
+                    "default": "now()"
+                }
+            },
+            "indexes": {},
+            "foreignKeys": {},
+            "compositePrimaryKeys": {},
+            "uniqueConstraints": {
+                "Users_Phone_Number_unique": {
+                    "name": "Users_Phone_Number_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["Phone_Number"]
+                },
+                "Users_Email_unique": {
+                    "name": "Users_Email_unique",
+                    "nullsNotDistinct": false,
+                    "columns": ["Email"]
+                }
+            }
+        }
+    },
+    "enums": {
+        "Status_Transactions": {
+            "name": "Status_Transactions",
+            "values": {
+                "PENDING": "PENDING",
+                "SUCCESS": "SUCCESS",
+                "CANCELED": "CANCELED"
+            }
+        },
+        "role": {
+            "name": "role",
+            "values": {
+                "CUSTOMER": "CUSTOMER",
+                "ADMIN": "ADMIN"
+            }
+        }
+    },
+    "schemas": {},
+    "_meta": {
+        "columns": {},
+        "schemas": {},
+        "tables": {}
+    }
+}

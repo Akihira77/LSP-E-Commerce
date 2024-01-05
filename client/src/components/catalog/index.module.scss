@@ -1,0 +1,41 @@
+.button_plus_container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.button_plus {
+    padding: 0;
+
+    :hover {
+        background-color: green;
+    }
+
+    i {
+        padding: 8px;
+    }
+
+    i:hover {
+        color: #009f7f;
+    }
+}
+
+.product_container {
+    // border: 1px solid gray;
+    border-radius: 4px;
+    margin: 0 5px;
+
+    >div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.product_image {
+    width: 100%;
+    height: 320px;
+}
